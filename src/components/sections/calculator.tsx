@@ -73,7 +73,7 @@ export default function CalculatorSection() {
     setIsSubmitting(true);
     
     const payload = {
-      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "c2b75ae7-15ea-4054-8be4-f0619dee9687",
       subject: "New Cost Calculator Lead - Grow Infinity",
       from_name: "Grow Infinity Calculator",
       name: `${formData.firstName} ${formData.lastName}`,
