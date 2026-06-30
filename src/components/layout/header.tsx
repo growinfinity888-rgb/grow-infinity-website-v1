@@ -106,17 +106,17 @@ export default function Header() {
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Business Setup</h4>
                     <ul className="space-y-3">
-                      <li><Link href="#mainland" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Mainland Company Formation</Link></li>
-                      <li><Link href="#freezone" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Free Zone Business Setup</Link></li>
-                      <li><Link href="#offshore" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Offshore Company</Link></li>
+                      <li><Link href="/#mainland" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Mainland Company Formation</Link></li>
+                      <li><Link href="/#freezone" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Free Zone Business Setup</Link></li>
+                      <li><Link href="/#offshore" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Offshore Company</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Corporate Services</h4>
                     <ul className="space-y-3">
-                      <li><Link href="#tax" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Corporate Tax & VAT</Link></li>
-                      <li><Link href="#golden-visa" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Golden Visa & PRO</Link></li>
-                      <li><Link href="#banking" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Corporate Bank Account</Link></li>
+                      <li><Link href="/#tax" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Corporate Tax & VAT</Link></li>
+                      <li><Link href="/#golden-visa" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Golden Visa & PRO</Link></li>
+                      <li><Link href="/#banking" className="text-sm font-medium hover:text-[#0D3B66] transition-colors">Corporate Bank Account</Link></li>
                     </ul>
                   </div>
                 </motion.div>
@@ -152,7 +152,7 @@ export default function Header() {
             <span>+971 4 500 0000</span>
           </a>
           <Link 
-            href="#calculator"
+            href="/#calculator"
             className={cn(
               buttonVariants({ size: "lg" }),
               "bg-[#0D3B66] hover:bg-[#1565C0] text-white rounded-full font-bold shadow-lg shadow-blue-900/20 px-8 transition-transform active:scale-95"
@@ -185,16 +185,18 @@ export default function Header() {
             className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
-              <Link href="#services" onClick={() => setMobileMenuOpen(false)} className="text-lg font-semibold text-gray-900">Services</Link>
+              <Link href="/#services" onClick={() => setMobileMenuOpen(false)} className="text-lg font-semibold text-gray-900">Services</Link>
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-lg font-semibold text-gray-900">
                   {link.name}
                 </Link>
               ))}
               <div className="h-px bg-gray-100 w-full my-2" />
-              <Button size="lg" className="bg-[#0D3B66] text-white w-full rounded-full">
-                Book Consultation
-              </Button>
+              <Link href="/#calculator" onClick={() => setMobileMenuOpen(false)} className="w-full">
+                <Button size="lg" className="bg-[#0D3B66] text-white w-full rounded-full">
+                  Book Consultation
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
