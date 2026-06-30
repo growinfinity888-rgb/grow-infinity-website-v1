@@ -4,8 +4,10 @@ import TrustSection from '@/components/sections/trust';
 import JurisdictionsSection from '@/components/sections/jurisdictions';
 import ServicesSection from '@/components/sections/services';
 import WhyUsSection from '@/components/sections/why-us';
+import ReviewsSection from '@/components/sections/reviews';
 import JourneySection from '@/components/sections/journey';
 import CalculatorSection from '@/components/sections/calculator';
+import FaqSection from '@/components/sections/faq';
 import Link from 'next/link';
 
 export default function Home() {
@@ -17,8 +19,10 @@ export default function Home() {
       <JurisdictionsSection />
       <ServicesSection />
       <WhyUsSection />
+      <ReviewsSection />
       <JourneySection />
       <CalculatorSection />
+      <FaqSection />
       
       {/* Simple CTA Banner to end the page */}
       <section className="bg-white py-24 border-b border-gray-100">

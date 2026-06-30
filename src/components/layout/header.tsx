@@ -44,7 +44,15 @@ export default function Header() {
       )}
     >
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center group">
+        <Link 
+          href="/" 
+          className="flex items-center group"
+          onClick={() => {
+            if (pathname === '/') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        >
           <div className="relative h-14 w-60 overflow-hidden">
             <div 
               className={cn(

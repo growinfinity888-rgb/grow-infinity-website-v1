@@ -61,7 +61,7 @@ export default function AboutSection() {
                 className="space-y-4 pt-12"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=800&auto=format&fit=crop" 
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" 
                   alt="Business Meeting" 
                   className="rounded-3xl shadow-xl object-cover h-[300px] w-full"
                 />

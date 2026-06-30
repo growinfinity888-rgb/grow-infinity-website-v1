@@ -15,13 +15,13 @@ const locations = [
   },
   {
     city: 'Abu Dhabi',
-    image: 'https://images.unsplash.com/photo-1541818224537-8ed5660b64be?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000&auto=format&fit=crop',
     zones: ['ADGM', 'KIZAD', 'Masdar City'],
     desc: 'The capital city, ideal for heavy industries, finance, and large-scale government contracts.'
   },
   {
     city: 'Sharjah & RAK',
-    image: 'https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1546412414-8035e1776c9a?q=80&w=1000&auto=format&fit=crop',
     zones: ['SHAMS', 'RAKEZ', 'SAIF Zone'],
     desc: 'Highly cost-effective jurisdictions perfect for SMEs, trading, and media companies.'
   }
@@ -51,8 +51,8 @@ export default function JurisdictionsSection() {
           <Link 
             href="/jurisdictions"
             className={cn(
-              buttonVariants({ variant: "outline" }),
-              "h-12 border-white/20 text-white hover:bg-white/10 hover:text-white rounded-xl"
+              buttonVariants({ variant: "default" }),
+              "h-12 bg-white text-black hover:bg-gray-100 rounded-xl font-bold shadow-lg"
             )}
           >
             Compare All Jurisdictions
