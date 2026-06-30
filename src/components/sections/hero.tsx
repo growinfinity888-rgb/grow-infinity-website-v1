@@ -169,6 +169,28 @@ export default function HeroSection() {
               </div>
             </div>
           </motion.div>
+
+          {/* Static Floating Badge 3: Golden Visa */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0, y: [0, -10, 0] }}
+            transition={{ 
+              opacity: { duration: 0.8, delay: 0.9 },
+              x: { duration: 0.8, delay: 0.9 },
+              y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+            }}
+            className="absolute top-[220px] right-[280px] bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl z-10"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <Star className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-sm">Golden Visa</h4>
+                <p className="text-[10px] text-slate-300 uppercase tracking-wider">10-Year Residency</p>
+              </div>
+            </div>
+          </motion.div>
           <AnimatePresence mode="wait">
             {activeCard === 0 && (
               <motion.div
