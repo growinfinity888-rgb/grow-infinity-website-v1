@@ -385,7 +385,6 @@ export default function CalculatorSection() {
           </div>
         );
       case 11:
-        const pricing = getPricing();
         return (
           <div className="max-w-2xl mx-auto relative z-10">
             <div className="relative bg-gradient-to-b from-[#0F172A] to-slate-900 border border-emerald-500/30 rounded-[2rem] p-8 lg:p-12 shadow-[0_0_50px_rgba(16,185,129,0.1)] overflow-hidden">
@@ -395,40 +394,18 @@ export default function CalculatorSection() {
                 <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400" />
                 </div>
-                <h3 className="text-3xl font-display font-medium text-white">Here is your estimate, {formData.firstName || 'Founder'}!</h3>
-                <p className="text-slate-400">We've calculated the most cost-effective route based on your inputs.</p>
+                <h3 className="text-3xl font-display font-medium text-white">Thank you, {formData.firstName || 'Founder'}!</h3>
+                <p className="text-slate-400 text-lg">We have received your query. Our corporate experts will review your requirements and get back to you soon with a tailored strategy.</p>
               </div>
 
-              <div className="space-y-6 mb-10 bg-white/5 rounded-2xl p-6 border border-white/10">
-                <div className="flex justify-between items-center text-slate-300">
-                  <span className="font-medium">Base License ({jurisdiction || 'Free Zone'})</span>
-                  <span className="font-mono text-white">AED {pricing.base.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between items-center text-slate-300">
-                  <span className="font-medium">Visa Allocation ({owners + (dependents === 'Yes' ? 2 : 0)} Visas)</span>
-                  <span className="font-mono text-white">AED {pricing.visaCost.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between items-center text-slate-300">
-                  <span className="font-medium">Office ({office || 'Virtual'})</span>
-                  <span className="font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Included</span>
-                </div>
-                
-                <div className="w-full border-t border-dashed border-white/20 my-4" />
-                
-                <div className="flex justify-between items-end">
-                  <span className="text-sm font-bold text-slate-400 uppercase tracking-widest">Estimated Total</span>
-                  <div className="text-right">
-                    <span className="text-4xl font-display font-bold text-white flex items-baseline gap-2">
-                      <span className="text-xl text-emerald-400 font-normal">AED</span>
-                      <CountUp end={pricing.total} duration={1.5} separator="," preserveValue />
-                    </span>
-                    <span className="text-xs text-slate-500 mt-1 block">Pricing is indicative & subject to change.</span>
-                  </div>
-                </div>
-              </div>
-
-              <Button className="w-full h-14 bg-white text-[#0F172A] hover:bg-gray-100 rounded-xl font-bold text-lg flex items-center justify-center gap-2">
-                Download Detailed PDF
+              <Button 
+                onClick={() => {
+                  setStep(1); // Reset calculator
+                  setFormData({ firstName: '', lastName: '', email: '', phone: '+971 ' });
+                }}
+                className="w-full h-14 bg-white text-[#0F172A] hover:bg-gray-100 rounded-xl font-bold text-lg flex items-center justify-center gap-2"
+              >
+                Close
               </Button>
             </div>
           </div>
