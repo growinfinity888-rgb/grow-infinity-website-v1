@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CountUp from 'react-countup';
-import { Calculator, ChevronLeft, CheckCircle2, Building2, Globe, Users, Briefcase, Plus, Minus, ArrowRight } from 'lucide-react';
+import { Calculator, ChevronLeft, CheckCircle2, Building2, Globe, Users, Briefcase, Plus, Minus, ArrowRight, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -30,6 +30,7 @@ export default function CalculatorSection() {
   const [dependents, setDependents] = useState('');
   const [nationality, setNationality] = useState('');
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '+971 ' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleNext = () => {
     if (step < totalSteps) setStep(step + 1);
@@ -60,6 +61,53 @@ export default function CalculatorSection() {
       visaCost,
       total: base + visaCost
     };
+  };
+
+  const handleSubmit = async () => {
+    // Basic validation
+    if (!formData.firstName || !formData.email || !formData.phone) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    const payload = {
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
+      subject: "New Cost Calculator Lead - Grow Infinity",
+      from_name: "Grow Infinity Calculator",
+      name: `${formData.firstName} ${formData.lastName}`,
+      email: formData.email,
+      phone: formData.phone,
+      activity: activity === 'Other' ? otherActivity : activity,
+      reason,
+      owners,
+      office,
+      timeline,
+      jurisdiction,
+      uaeResident,
+      dependents,
+      nationality,
+      calculatedBasePrice: getPricing().base,
+      calculatedVisaCost: getPricing().visaCost,
+      calculatedTotal: getPricing().total,
+    };
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      console.error("Form submission error", error);
+    } finally {
+      setIsSubmitting(false);
+      handleNext();
+    }
   };
 
   const renderStepContent = () => {
@@ -322,8 +370,16 @@ export default function CalculatorSection() {
                 />
               </div>
               
-              <Button onClick={handleNext} className="w-full h-14 bg-gradient-to-r from-[#0EA5E9] to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 mt-6 shadow-[0_0_30px_rgba(14,165,233,0.3)]">
-                GET ESTIMATE <ArrowRight className="w-5 h-5" />
+              <Button disabled={isSubmitting} onClick={handleSubmit} className="w-full h-14 bg-gradient-to-r from-[#0EA5E9] to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 mt-6 shadow-[0_0_30px_rgba(14,165,233,0.3)]">
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" /> Submitting...
+                  </>
+                ) : (
+                  <>
+                    GET ESTIMATE <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
               </Button>
             </div>
           </div>
