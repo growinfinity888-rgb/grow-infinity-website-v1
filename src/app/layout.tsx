@@ -48,7 +48,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-white text-slate-800 flex flex-col antialiased selection:bg-[#0D3B66] selection:text-white overflow-x-hidden">
+      <body suppressHydrationWarning className="min-h-screen bg-white text-slate-800 flex flex-col antialiased selection:bg-[#0D3B66] selection:text-white overflow-x-hidden">
         <LenisProvider>
           <Header />
           <main className="flex-1">{children}</main>
